@@ -3,14 +3,15 @@ import styled from "styled-components";
 
 export default function Pergunta({index, texto, mudaFase}) {
     return (
-      <PerguntaBox>
+      <PerguntaBox data-test="flashcard">
         <p data-test="flashcard-text" >{texto}</p>
         <img data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={()=>mudaFase(index)}/>
       </PerguntaBox>
     );
   }
 
-  const PerguntaBox = styled.span`width: 300px;
+  const PerguntaBox = styled.div`
+  width: 300px;
   min-height: 131px;
   background-color: #FFFFD4;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);

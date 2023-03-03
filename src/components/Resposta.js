@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Resposta({ index, texto, mudaFase, pontuar }) {
   return (
-    <RespostaBox>
+    <RespostaBox data-test="flashcard">
       <p data-test="flashcard-text">{texto}</p>
       <div>
         <Botao data-test="no-btn" color={"#FF3030"} onClick={()=>pontuar(index, "erro")}>Não lembrei</Botao>
@@ -13,7 +13,7 @@ export default function Resposta({ index, texto, mudaFase, pontuar }) {
   );
 }
 
-const RespostaBox = styled.span`
+const RespostaBox = styled.div`
   width: 300px;
   min-height: 131px;
   background-color: #ffffd4;
