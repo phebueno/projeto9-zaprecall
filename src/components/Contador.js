@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function Footer(){
+export default function Contador({resultados, contadorRespostas}){
     return(
-        <FooterWrapper>0/4 CONCLUÍDOS</FooterWrapper>
+        <FooterWrapper>{contadorRespostas}/{resultados.length} CONCLUÍDOS</FooterWrapper>
     )
 }
 

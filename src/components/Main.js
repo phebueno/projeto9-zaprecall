@@ -8,16 +8,15 @@ import certo from "../assets/icone_certo.png"
 import quase from "../assets/icone_quase.png"
 import erro from "../assets/icone_erro.png"
 
-export default function Main({ cards }) {
+export default function Main({ cards, resultados, setResultados, contadorRespostas, setContadorRespostas }) {
     
   const layout = [];
   const [cardFase, setCardFase] = useState([...cards].fill(0)); //ESTADO 0 É O ESTADO DE INÍCIO
-  const [resultados, setResultados] = useState([...cards].fill(undefined));
   //const [imagem,setImagem] = useState(seta);
   const imagem = {'seta':seta,
   'certo':certo,
   'quase':quase,
-'erro':erro};
+  'erro':erro};
 
     function mudaFase(indiceCartao){
         let novaFase = [...cardFase];
@@ -31,6 +30,7 @@ export default function Main({ cards }) {
       novoResultado[index] = id; //certo, quase ou erro
       setResultados([...novoResultado]);
       mudaFase(index);
+      setContadorRespostas(contadorRespostas+1);
     }
 
   cards.forEach((card, index) => {    
