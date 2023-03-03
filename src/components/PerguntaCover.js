@@ -4,7 +4,7 @@ export default function PerguntaCover({index, imagem, mudaFase, cardAtualFase, r
   
   return (
     <PerguntaCoverBox onClick={()=>mudaFase(index)} cardAtualFase={cardAtualFase} resultadoObtido={resultadoObtido} >
-      <p>Pergunta {index+1} {resultadoObtido}</p>
+      <p>Pergunta {index+1}</p>
       {/* DEFINE SE USA A IMAGEM DE SETA, OU ALGUMA DAS OUTRAS TRÊS OPÇÕES */}
       {cardAtualFase===0 ? <img src={imagem['seta']} alt="Seta" /> : <img src={imagem[resultadoObtido]} alt={resultadoObtido} />}
     </PerguntaCoverBox>
@@ -12,7 +12,7 @@ export default function PerguntaCover({index, imagem, mudaFase, cardAtualFase, r
 }
 
 const mudarCor = cor =>{
-  switch (cor.resultadoObtido) {
+  switch (cor) {
     case 'certo':
       return "#2FBE34";
     case 'erro':
@@ -34,7 +34,7 @@ const PerguntaCoverBox = styled.div`
     background-color: #FFFFFF;
     text-decoration: ${(props=> props.cardAtualFase === 0 ? "none" : "line-through")};
     text-decoration-thickness: 3px;
-    text-decoration-color: #333333;
+    text-decoration-color: ${({resultadoObtido}) => mudarCor(resultadoObtido)};
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 0 15px;
@@ -44,7 +44,7 @@ const PerguntaCoverBox = styled.div`
       font-weight: 700;
       font-size: 16px;
       line-height: 19px;
-      color:${(props) => mudarCor(props)};
+      color:${({resultadoObtido}) => mudarCor(resultadoObtido)};
       //color: #333333;
     }
     img {
