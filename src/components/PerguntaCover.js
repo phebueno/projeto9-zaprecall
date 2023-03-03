@@ -3,10 +3,10 @@ import styled from "styled-components";
 export default function PerguntaCover({index, imagem, mudaFase, cardAtualFase, resultadoObtido}) {
   
   return (
-    <PerguntaCoverBox onClick={()=>mudaFase(index)} cardAtualFase={cardAtualFase} resultadoObtido={resultadoObtido} >
-      <p>Pergunta {index+1}</p>
+    <PerguntaCoverBox data-test="flashcard" cardAtualFase={cardAtualFase} resultadoObtido={resultadoObtido} >
+      <p data-test="flashcard-text" >Pergunta {index+1}</p>
       {/* DEFINE SE USA A IMAGEM DE SETA, OU ALGUMA DAS OUTRAS TRÊS OPÇÕES */}
-      {cardAtualFase===0 ? <img src={imagem['seta']} alt="Seta" /> : <img src={imagem[resultadoObtido]} alt={resultadoObtido} />}
+      {cardAtualFase===0 ? <img data-test="play-btn" src={imagem['seta']} alt="Seta" onClick={()=>mudaFase(index)}  /> : <img src={imagem[resultadoObtido]} alt={resultadoObtido} />}
     </PerguntaCoverBox>
   );
 }
@@ -48,6 +48,7 @@ const PerguntaCoverBox = styled.div`
       //color: #333333;
     }
     img {
+      cursor:pointer;
       width: 20px;
       height: 20px;
     }

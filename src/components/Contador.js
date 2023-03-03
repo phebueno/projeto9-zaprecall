@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Contador({resultados, contadorRespostas}){
     return(
-        <FooterWrapper>{contadorRespostas}/{resultados.length} CONCLUÍDOS</FooterWrapper>
+        <FooterWrapper data-test="footer">{contadorRespostas}/{resultados.length} CONCLUÍDOS</FooterWrapper>
     )
 }
 

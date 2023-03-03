@@ -3,11 +3,11 @@ import styled from "styled-components";
 export default function Resposta({ index, texto, mudaFase, pontuar }) {
   return (
     <RespostaBox>
-      <p>{texto}</p>
+      <p data-test="flashcard-text">{texto}</p>
       <div>
-        <Botao color={"#FF3030"} onClick={()=>pontuar(index, "erro")}>Não lembrei</Botao>
-        <Botao color={"#FF922E"} onClick={()=>pontuar(index, "quase")}>Quase não lembrei</Botao>
-        <Botao color={"#2FBE34"} onClick={()=>pontuar(index, "certo")}>Zap!</Botao>
+        <Botao data-test="no-btn" color={"#FF3030"} onClick={()=>pontuar(index, "erro")}>Não lembrei</Botao>
+        <Botao data-test="partial-btn" color={"#FF922E"} onClick={()=>pontuar(index, "quase")}>Quase não lembrei</Botao>
+        <Botao data-test="zap-btn" color={"#2FBE34"} onClick={()=>pontuar(index, "certo")}>Zap!</Botao>
       </div>
     </RespostaBox>
   );
@@ -38,6 +38,7 @@ const RespostaBox = styled.span`
 `;
 
 const Botao = styled.button`
+    cursor:pointer;
     width: 85.17px;
     height: 37.17px;
     border-radius: 5px;

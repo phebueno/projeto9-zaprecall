@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default function Pergunta({index, texto, mudaFase}) {
     return (
       <PerguntaBox>
-        <p>{texto}</p>
-        <img src={setaVirar} alt="setaVirar" onClick={()=>mudaFase(index)}/>
+        <p data-test="flashcard-text" >{texto}</p>
+        <img data-test="turn-btn" src={setaVirar} alt="setaVirar" onClick={()=>mudaFase(index)}/>
       </PerguntaBox>
     );
   }
