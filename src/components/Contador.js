@@ -1,9 +1,24 @@
+import imagem from "../constants/iconInfo";
 import styled from "styled-components";
 
-export default function Contador({resultados, contadorRespostas}){
-    return(
-        <FooterWrapper data-test="footer">{contadorRespostas}/{resultados.length} CONCLUÍDOS</FooterWrapper>
-    )
+export default function Contador({
+  resultados,
+  contadorRespostas,
+  resultadosOrdenados,
+}) {
+  return (
+    <FooterWrapper data-test="footer">
+      <p>
+        {contadorRespostas}/{resultados.length} CONCLUÍDOS
+      </p>
+
+      <ImgBox>
+        {resultadosOrdenados.map((resultadoIcone) => (
+          <img src={imagem[resultadoIcone].src} alt={resultadosOrdenados} />
+        ))}
+      </ImgBox>
+    </FooterWrapper>
+  );
 }
 
 const FooterWrapper = styled.footer`
@@ -21,4 +36,12 @@ const FooterWrapper = styled.footer`
   font-size: 18px;
   line-height: 22px;
   color: #333333;
+  display: flex;
+  flex-direction: column;
+  gap:5px;
+`;
+
+const ImgBox = styled.div`
+display:flex;
+gap: 5px;
 `;

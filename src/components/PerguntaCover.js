@@ -1,15 +1,8 @@
 import styled from "styled-components";
-import seta from "../assets/seta_play.png"
-import certo from "../assets/icone_certo.png"
-import quase from "../assets/icone_quase.png"
-import erro from "../assets/icone_erro.png"
+import imagem from "../constants/iconInfo.js"
 
 export default function PerguntaCover({index, mudaFase, cardAtualFase, resultadoObtido}) {
   //O ícone é controlado a partir do estado do resultadoObtido, que indica valores abaixo:
-  const imagem = {'seta':{'src':seta,'dataTest':"play-btn"},
-  'certo':{'src':certo,'dataTest':"zap-icon"},
-  'quase':{'src':quase,'dataTest':"partial-icon"},
-  'erro':{'src':erro,'dataTest':"no-icon"}};
 
   return (
     <PerguntaCoverBox data-test="flashcard" cardAtualFase={cardAtualFase} resultadoObtido={resultadoObtido} >

@@ -24,6 +24,7 @@ const RespostaBox = styled.div`
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  gap:15px;
   p {
     font-family: "Recursive", sans-serif;
     font-weight: 400;
