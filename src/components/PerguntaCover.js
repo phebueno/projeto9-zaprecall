@@ -1,16 +1,25 @@
 import styled from "styled-components";
+import seta from "../assets/seta_play.png"
+import certo from "../assets/icone_certo.png"
+import quase from "../assets/icone_quase.png"
+import erro from "../assets/icone_erro.png"
 
-export default function PerguntaCover({index, imagem, mudaFase, cardAtualFase, resultadoObtido}) {
-  
+export default function PerguntaCover({index, mudaFase, cardAtualFase, resultadoObtido}) {
+  //O ícone é controlado a partir do estado do resultadoObtido, que indica valores abaixo:
+  const imagem = {'seta':{'src':seta,'dataTest':"play-btn"},
+  'certo':{'src':certo,'dataTest':"zap-icon"},
+  'quase':{'src':quase,'dataTest':"partial-icon"},
+  'erro':{'src':erro,'dataTest':"no-icon"}};
+
   return (
     <PerguntaCoverBox data-test="flashcard" cardAtualFase={cardAtualFase} resultadoObtido={resultadoObtido} >
       <p data-test="flashcard-text" >Pergunta {index+1}</p>
       {/* DEFINE SE USA A IMAGEM DE SETA, OU ALGUMA DAS OUTRAS TRÊS OPÇÕES */}
-      {cardAtualFase===0 ? <img data-test="play-btn" src={imagem['seta']} alt="Seta" onClick={()=>mudaFase(index)}  /> : <img src={imagem[resultadoObtido]} alt={resultadoObtido} />}
+      {cardAtualFase===0 ? <img data-test={imagem['seta'].dataTest} src={imagem['seta'].src} alt="Seta" onClick={()=>mudaFase(index)}  /> : <img data-test={imagem[resultadoObtido].dataTest} src={imagem[resultadoObtido].src} alt={resultadoObtido} />}
     </PerguntaCoverBox>
   );
 }
-
+//Troca a cor de acordo com o botão clicado anteriormente em Resposta
 const mudarCor = cor =>{
   switch (cor) {
     case 'certo':
@@ -48,7 +57,7 @@ const PerguntaCoverBox = styled.div`
       //color: #333333;
     }
     img {
-      cursor:pointer;
+      cursor:${(props=> props.cardAtualFase === 0 ? "pointer" : "default")};
       width: 20px;
       height: 20px;
     }

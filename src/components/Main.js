@@ -3,20 +3,13 @@ import styled from "styled-components";
 import Pergunta from "./Pergunta";
 import PerguntaCover from "./PerguntaCover";
 import Resposta from "./Resposta";
-import seta from "../assets/seta_play.png"
-import certo from "../assets/icone_certo.png"
-import quase from "../assets/icone_quase.png"
-import erro from "../assets/icone_erro.png"
 
 export default function Main({ cards, resultados, setResultados, contadorRespostas, setContadorRespostas }) {
     
   const layout = [];
   const [cardFase, setCardFase] = useState([...cards].fill(0)); //ESTADO 0 É O ESTADO DE INÍCIO
   //const [imagem,setImagem] = useState(seta);
-  const imagem = {'seta':seta,
-  'certo':certo,
-  'quase':quase,
-  'erro':erro};
+  
 
     function mudaFase(indiceCartao){
         let novaFase = [...cardFase];
@@ -33,9 +26,10 @@ export default function Main({ cards, resultados, setResultados, contadorRespost
       setContadorRespostas(contadorRespostas+1);
     }
 
+  //Cria os divs contendo a carta, dependendo do estado
   cards.forEach((card, index) => {    
     if (cardFase[index]===0 || cardFase[index]===3){ //Se não for no estado de pergunta exposta
-        layout.push(<PerguntaCover key={index} index={index} imagem={imagem} mudaFase={mudaFase}  cardAtualFase={cardFase[index]} resultadoObtido={resultados[index]}/>);
+        layout.push(<PerguntaCover key={index} index={index} mudaFase={mudaFase}  cardAtualFase={cardFase[index]} resultadoObtido={resultados[index]}/>);
     }
     if (cardFase[index]===1){ //PERGUNTA
         layout.push(<Pergunta key={index} index={index} texto={cards[index].question} mudaFase={mudaFase} />);
