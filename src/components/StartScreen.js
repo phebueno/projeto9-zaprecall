@@ -13,7 +13,7 @@ export default function StartScreen({ logo, setRecallComecado, recallComecado })
 }
 
 const StartContainer = styled.div`
-  width: 375px;
+  width: inherit;
   height: 100vh;
   background-color: #fb6b6b;
   display:${(props=> props.recallComecado ? "none" : "flex")};

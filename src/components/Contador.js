@@ -34,8 +34,13 @@ export default function Contador({
           {contadorRespostas}/{resultados.length} CONCLUÍDOS
         </p>
         <ImgBox>
-          {resultadosOrdenados.map((resultadoIcone) => (
-            <img data-test={imagem[resultadoIcone].dataTest} src={imagem[resultadoIcone].src} alt={resultadosOrdenados} />
+          {resultadosOrdenados.map((resultadoIcone, index) => (
+            <img
+              key={index}
+              data-test={imagem[resultadoIcone].dataTest}
+              src={imagem[resultadoIcone].src}
+              alt={resultadosOrdenados}
+            />
           ))}
         </ImgBox>
       </ContadorBox>
@@ -44,7 +49,7 @@ export default function Contador({
 }
 
 const FooterWrapper = styled.footer`
-  width: 375px;
+  width: inherit;
   height: ${(props) =>
     props.resultados.includes(undefined) ? "70px" : "171px"};
   display: flex;
@@ -70,13 +75,9 @@ const ContadorBox = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 5px;
-  position: ${(props) =>
-    props.resultados.includes(undefined) ? "absolute" : "inline"};
+  position: absolute;
   width: 200px;
-  bottom: ${(props) =>
-    props.resultados.includes(undefined)
-      ? "10px"
-      : "0"}; //distância fixa para não mudar após alteração no footer
+  bottom: 10px; //distância fixa para não mudar após alteração no footer
 `;
 
 const ImgBox = styled.div`

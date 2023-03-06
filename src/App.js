@@ -55,10 +55,12 @@ export default function App() {
 }
 
 const ContainerApp = styled.div`
-  width: 375px;
+  min-width:375px;
+  width: 100%;
   height: 100%;
 `;
 
 const ZapMain = styled.div`
-  display: ${(props=> props.recallComecado ? "block" : "none")};;
+  display: ${(props=> props.recallComecado ? "block" : "none")};
+  width: inherit;
 `;

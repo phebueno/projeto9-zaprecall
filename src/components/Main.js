@@ -51,12 +51,14 @@ export default function Main({
       );
     }
   });
-  return <MainWrapper>{layout}</MainWrapper>;
+  return <MainWrapper resultados={resultados}>{layout}</MainWrapper>;
 }
 
 const MainWrapper = styled.main`
   box-sizing: border-box;
   padding: 0 45px 116px;
+  padding-bottom: ${(props) =>
+    props.resultados.includes(undefined) ? "116px" : "217px"};
   min-height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
