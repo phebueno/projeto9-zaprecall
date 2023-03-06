@@ -11,7 +11,6 @@ export default function Main({
   cardFase,
 }) {
   const layout = [];
-  //const [imagem,setImagem] = useState(seta);
 
   //Cria os divs contendo a carta, dependendo do estado
   cards.forEach((card, index) => {

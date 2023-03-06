@@ -27,7 +27,6 @@ const mudarCor = cor =>{
 };
 
 const PerguntaCoverBox = styled.div`
-    //Renomear este container de acordo com mudanças
     width: 300px;
     height: 65px;
     display: flex;

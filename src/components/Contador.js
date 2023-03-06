@@ -8,6 +8,7 @@ export default function Contador({
   contadorRespostas,
   resultadosOrdenados,
 }) {
+  const allEqual = arr => arr.every(val => val === undefined); //todos os valores são indefinidos?
   return (
     <FooterWrapper data-test="footer" resultados={resultados}>
       <ResultsBox data-test="finish-text" resultados={resultados}>
@@ -29,7 +30,7 @@ export default function Contador({
           </>
         )}
       </ResultsBox>
-      <ContadorBox resultados={resultados}>
+      <ContadorBox resultados={resultados} allEqual={allEqual}>
         <p>
           {contadorRespostas}/{resultados.length} CONCLUÍDOS
         </p>
@@ -78,6 +79,7 @@ const ContadorBox = styled.div`
   position: absolute;
   width: 200px;
   bottom: 10px; //distância fixa para não mudar após alteração no footer
+  bottom: ${({resultados, allEqual}) => allEqual(resultados) ? "20px" : "10px"}; //SE NÃO TIVER RESPONDIDO, o espaçamento é maior (compensa a falta de imagem)
 `;
 
 const ImgBox = styled.div`
